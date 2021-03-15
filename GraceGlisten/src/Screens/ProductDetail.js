@@ -7,7 +7,7 @@ import {
   ImageBackground,
   Image
 } from 'react-native';
-import bg from '../../assets/images/bg2.png';
+// import bg from '../../assets/images/bg2.png';
 import { View, Text } from 'react-native';
 import { HorizontalList, Wrapper,Header } from '../Components';
 import { colors, fonts, metrics } from '../utils/Theme';
@@ -91,13 +91,18 @@ class ProductDetail extends Component {
     const quantity = flag.length !== 0 ? flag[0].quantity : 0;
    
     return (
-      <Wrapper top={0} bottom={0} style={{ backgroundColor: bgcolor }}>
+      <Wrapper top={0} bottom={0} style={{ backgroundColor: colors.primary }}>
       <Header textStyle={{color:colors.secondary}} ></Header>
 
         <ScrollView
           style={{ flex: 1, backgroundColor: colors.primary }}
           bounces={false}
           showsVerticalScrollIndicator={false}>
+            <Text numberOfLines={2} ellipsizeMode="tail" style={styles.nameHeading}>{name}</Text>
+            <Text style={{
+              fontSize:20, textAlign:'center',
+              color:'white'
+            }}>${price}</Text>
               <View style={styles.imageView} >
                 <Image style={styles.image} source={image} />
               </View>
@@ -108,7 +113,7 @@ class ProductDetail extends Component {
                 </View>
               </TouchableWithoutFeedback> */}
               <View style={{ paddingHorizontal: metrics.defaultMargin, paddingTop: metrics.defaultMargin }}>
-                <View style={{ width: metrics.width * 0.9,flexDirection:'row', alignItems:'center'}}>
+                {/* <View style={{ width: metrics.width * 0.9,flexDirection:'row', alignItems:'center'}}>
                   <Text numberOfLines={2} ellipsizeMode="tail" style={styles.nameHeading}>{name}</Text>
                   <View style={styles.quantityView}>
                       <TouchableOpacity
@@ -125,12 +130,12 @@ class ProductDetail extends Component {
                         <Icon name="add" style={styles.icon} />
                       </TouchableOpacity>
                     </View>
-                </View>
+                </View> */}
 
                
                 <Text style={styles.text}>{description}</Text>
 
-                <View style={styles.row}>
+                {/* <View style={styles.row}>
                   <View style={styles.col}>
                     <View style={styles.blurCard}>
                         <Text style={styles.property}>Height</Text>
@@ -151,6 +156,28 @@ class ProductDetail extends Component {
                         <Text style={styles.value}>${price}</Text>
                     </View>
                   </View>
+                </View> */}
+                <View style={{
+                  flexDirection:'row',
+                  justifyContent:'space-between'
+                }}>
+                  <Text style={{fontSize:16, color:'white', fontWeight:'bold'}}>Quantity:</Text>
+                <View style={styles.quantityView}>
+                      <TouchableOpacity
+                        activeOpacity={0.8}
+                        onPress={this.deleteItem}
+                        style={styles.iconView}>
+                        <Icon name="remove" style={{ ...styles.icon }} />
+                      </TouchableOpacity>
+                      <Text style={styles.quantity}>{quantity}</Text>
+                      <TouchableOpacity
+                        activeOpacity={0.8}
+                        onPress={this.addItem}
+                        style={styles.iconView}>
+                        <Icon name="add" style={styles.icon} />
+                      </TouchableOpacity>
+                    </View>
+
                 </View>
 
               </View>
@@ -238,6 +265,7 @@ const styles = StyleSheet.create({
     flex:1,
     marginRight:10,
     fontWeight:'bold',
+    textAlign:'center'
   },
   value:{
     fontFamily: fonts.secondaryBold,
@@ -253,6 +281,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginBottom: metrics.defaultMargin,
     color: colors.secondary,
+    textAlign:'center'
   },
   buttonView: {
     backgroundColor: colors.secondary,
@@ -299,7 +328,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: metrics.defaultMargin,
     backgroundColor:'white',
-    borderRadius:20,
+    borderRadius:5,
     paddingHorizontal:3
   },
   iconView: {
@@ -312,12 +341,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 24,
-    color: 'black',
+    color: colors.primary,
   },
   quantity: {
     marginHorizontal: 10,
     fontSize: 18,
-    color:colors.secondary,
+    color:colors.primary,
     fontWeight:'bold',
   },
   row: {

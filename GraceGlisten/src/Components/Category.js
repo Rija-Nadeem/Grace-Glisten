@@ -24,14 +24,15 @@ export default class Category extends Component {
         <TouchableWithoutFeedback
           onPress={() => onPress(item)}>
           <View style={[styles.category,
-            {backgroundColor: selected ? colors.primary: 'transparent'}
+            {backgroundColor: selected ? colors.primary: 'transparent' }
           ]}>
             {/* <View style={[styles.dot,{display:selected?'flex':'none'}]}></View> */}
             <Text
               style={[
                 styles.categoryText,
                 {
-                  // color:selected ? colors.secondary: colors.grey,
+                  color:selected ? 'white': 'black',
+                  // color: 'transparent',
                   fontFamily:selected ? fonts.primaryBold:fonts.primary,
                   fontWeight:selected? 'bold':'normal',
                 },
@@ -50,11 +51,9 @@ const styles = StyleSheet.create({
       justifyContent:'center',
       alignItems:'center',
       // backgroundColor:colors.primary,
-      borderRadius:15,
-      paddingHorizontal:20,
-      marginRight:metrics.smallMargin,
-
-      
+      borderRadius:5,
+      paddingHorizontal:10,
+      marginRight:10,
     },
     categoryText: {
       fontFamily: fonts.primary,

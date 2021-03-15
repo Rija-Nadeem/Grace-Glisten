@@ -1,184 +1,287 @@
-import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import React, {Component, version} from 'react';
+import {View, Text, Image, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {colors, fonts, metrics} from '../utils/Theme';
+
+
 import data from '../../data';
 import Navigator from '../utils/Navigator';
-
+import {colors, fonts, metrics} from '../utils/Theme';
+import Fav from './Fav';
 
 export default class CartItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+     };
   }
 
-  // getImage(){
-  //   let filterData=data.image.find((item=>(
-  //     item.productid==this.props.item.id
-  //   )))
-  //   // console.log('images', filterData)
-  //   return filterData.image
-  //   // this.setState({productImage:image ? image.image : ''},()=>console.log('imagessss', this.state.productImage))
-  // }
 
-  getCategoryName=(id)=>{
-    let name= data.category.filter((cat)=>(
-      cat.id===id
-    ))
-    return name[0].name
-  }
   render() {
-    // const image=this.getImage()
-
-    const {name,categoryid,days,country, description, price,bgcolor,isFav, image} = this.props.item;
-
+    const {index}=this.props;
+    const {name, description, price,isFav, image} = this.props.item;
     return (
-      <TouchableWithoutFeedback
-        onPress={() =>
-          Navigator.navigate('ProductDetail', {
-            item: this.props.item,
-            category: this.props.item.categoryid,
-          })
-        }>
-
-        <View style={[styles.container]}>
-          <View style={{flexDirection: 'row', flex: 1, }}>
-            <View style={styles.imgContainer}>
-              <Image
-                style={[styles.image, {backgroundColor: bgcolor}]}
-                source={image}
-              />
-            </View>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => Navigator.navigate('ProductDetail',{item:this.props.item,category:this.props.category})}>
+        <View>
+          <View style={[styles.outerCard]}>
+            <View style={styles.innerCard}>
+              <View style={[styles.content]}>
     
-            <View style={{flex: 1, justifyContent:'space-between',marginLeft:metrics.defaultMargin,}}>
-              <Text numberOfLines={2} style={styles.title}>
-                {name}
-              </Text>
-        
-              <Text style={styles.pricetag} numberOfLines={1} ellipsizeMode="tail">${price}</Text>
+                <View style={[styles.imageView]}>
+                  <Image source={image} style={styles.image} />
+                </View>
+                <View style={styles.details}>
+                  {/* <View style={{
+                    flexDirection:'row',
+                    position:'absolute',
+                    top:10, right:15
+                  }}>
+                        <Fav isFav={isFav} item={this.props.item}/>
+                  </View> */}
+                  <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
+                    {name}
+                  </Text>
+                  <Text style={styles.desc} numberOfLines={1} ellipsizeMode="tail">
+                    {description}
+                  </Text>
+                  <View style={{flexDirection:'row',}}>
+                  <Text style={styles.Ndesc} numberOfLines={1} ellipsizeMode="tail">${price}</Text>
+                    <View style={styles.NquantityView}>
+                      <Icon
+                        name="plus-box"
+                        style={styles.Nicon}
+                        color='black'
+                        onPress={this.props.onAdd}
+                      />
+                      <Text style={styles.Nquantity}>{this.props.quantity}</Text>
+                      <Icon
+                        name="minus-box"
+                        style={styles.Nicon}
+                        onPress={this.props.onMinus}
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
             </View>
+            {/* <View style={styles.iconView}> */}
+              {/* <Icon name="plus" color="white" size={24} /> */}
+              {/* <Fav isFav={isFav} item={this.props.item}/>
+            </View> */}
           </View>
-          <View style={styles.quantityView}>
-            {/* <Icon
-              name="plus-box"
-              style={styles.icon}
-              color='black'
-              onPress={this.props.onAdd}
-            /> */}
-            <Text style={styles.quantity}>x {this.props.quantity}</Text>
-            {/* <Icon
-              name="minus-box"
-              style={styles.icon}
-              onPress={this.props.onMinus}
-            /> */}
-          </View>
+
+          {/* <ImageBackground 
+            source={image} 
+            style={[styles.container,{backgroundColor:bgcolor, }]}
+            imageStyle={{ borderRadius: 30,}}
+            >
+            <Fav style={{right:-8,top:10}} isFav={isFav} item={this.props.item}/>
+            
+            <View style={styles.detailView}>
+              <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">{name}</Text>
+                <Text style={[styles.title,{color:colors.grey, fontFamily:fonts.secondaryBold}]} numberOfLines={1} ellipsizeMode="tail">${price}</Text>
+              </View>
+             
+              <View style={{
+                flexDirection:'row',
+                alignItems:'center'
+              }}>
+                <View style={[styles.dot]}></View>
+                <Text style={styles.desc} numberOfLines={1} ellipsizeMode="tail">
+                  {days}
+                </Text>
+                <View style={[styles.dot]}></View>
+                <Text style={styles.desc} numberOfLines={1} ellipsizeMode="tail">
+                  {country}
+                </Text>
+              </View>
+            </View>
+          </ImageBackground> */}
         </View>
-        </TouchableWithoutFeedback>
+      </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: metrics.defaultMargin,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    // borderRadius: 20,
-    overflow: 'hidden',
-    backgroundColor:'white',
-    // borderColor:'red',
-    // borderWidth:1,
-    margin:metrics.defaultMargin,
+  // container: {
+  //   marginBottom: metrics.defaultMargin,
+  //   borderRadius:30,
+  //   position:'relative',
+  //   top:0,
+  //   left:0,
+  //   flex:1,
+  //   aspectRatio:1,
     
+  // },
+ 
+  
+  // detailView: {
+  //   paddingVertical:20,
+  //   width:'100%',
+  //   paddingHorizontal:20,
+  //   position:'absolute',
+  //   bottom:0,
+  //   left:0,
+  //   backgroundColor: colors.white,
+  //   borderRadius:30,
+  // },
+  // iconView: {
+  //   // backgroundColor: colors.secondary,
+  //   // borderBottomEndRadius: 15,
+  //   // borderTopStartRadius: 15,
+  //   // width: 45,
+  //   // height: 45,
+  //   // alignItems: 'center',
+  //   // justifyContent: 'center',
+  //   // position: 'absolute',
+  //   // bottom: 0,
+  //   // right: 0,
+  //   // shadowColor: colors.secondary,
+  //   // shadowOffset: {
+  //   //   width: 2,
+  //   //   height: 2,
+  //   // },
+  //   // shadowOpacity: 0.75,
+  //   // shadowRadius: 3.84,
+  //   justifyContent:'center',
+  //   alignItems:'center',
+  //   width: metrics.defaultMargin *2
+  //   // paddingLeft: '5%'
+  // },
+  // title: {
+  //   fontSize: 18,
+  //   fontFamily: fonts.primaryBold,
+  //   // paddingRight:20
+  // },
+ 
+  // dot: {
+  //   backgroundColor: colors.grey,
+
+  //   width: 5,
+  //   height: 5,
+  //   borderRadius: 5,
+  //   marginTop:3,
+  //   marginHorizontal:5
+  // },
+
+
+  ////////////////
+  imageView: {
+    width: 120,
+    height: 150,
+    backgroundColor:'transparent',
+    borderRadius:30,
+    paddingRight:metrics.smallMargin,
+    position:'absolute',
+    top:0,
+    left:-50
   },
   image: {
-    width: 100,
-    height: 100,
-    borderBottomLeftRadius: 15,
-    borderTopLeftRadius: 15,
-    // marginRight: 20,
-    backgroundColor:'white',
+    width: '100%',
+    height: '100%',
     resizeMode:'contain',
   },
-  headingOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-
-    backgroundColor: colors.primary,
-    opacity: 0.5,
-    width: 100,
-    height: 100,
-  },
-  pricetag:{
-    fontSize:20,
-    fontFamily:fonts.secondaryBold,
-    color:colors.white,
-    marginVertical: 5,
+  outerCard:{
+    width: metrics.width *0.90,
+    height:150,
+    backgroundColor:colors.primary,
+    marginBottom: metrics.defaultMargin,
+    marginHorizontal:metrics.defaultMargin,
+    borderRadius:30,
+    display:'flex',
+    // flexDirection:'row',
+    flexDirection:'row-reverse',
+    position:'relative',
+    top:0,
+    left:0
 
   },
-  priceContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 100,
-    height: 100,
-  
+  innerCard:{
+    width: metrics.width *0.75,
+    height:150,
+    backgroundColor:colors.lightBackground,
+    marginBottom: metrics.defaultMargin,
+    // borderRadius:30,
+    borderTopRightRadius:30,
+    borderBottomRightRadius:30
+    // alignItems:'center'
   },
-  title: {
-    fontFamily: fonts.primaryBold,
-    fontSize: 18,
+  details:{
+    backgroundColor:'transparent',
+    flex:1,
+    borderRadius:30,
+    paddingTop:30,
+    paddingLeft: 70,
+    position:'relative',
+    top:0,
+    left:0
+  },
+  content:{
+    flex:1,
+    backgroundColor:'transparent',
+    flexDirection:'row',
+  },
+  name:{
+    fontSize:18,
+    color:'black',
+    fontFamily:fonts.primaryBold,
     fontWeight:'bold',
-    color:colors.primary,
-    // marginTop:4,
-    marginVertical: 5,
-  },
-  price: {
-    fontFamily: fonts.primaryBold,
-    fontSize: 18,
-    marginBottom: 5,
-  },
-  quantityView: {
-    // backgroundColor: colors.secondary,
-    padding: 5,
-    borderRadius: 10,
-    marginRight: 10,
-    marginVertical: 5,
-  },
-  quantity: {
-    alignSelf: 'center',
-    marginVertical: 5,
-    fontFamily: fonts.primaryBold,
-  },
-  icon: {
-    fontSize: 24,
-    color: colors.primary,
+
   },
   desc: {
     color: colors.grey,
     marginVertical: 5,
+    fontSize: 12,
     fontFamily: fonts.secondary,
   },
- 
-  dot: {
-    fontSize:7,
-    paddingBottom:5,
+  price: {
+    // marginTop: 10,
+    fontSize: 18,
+    fontFamily: fonts.secondaryBold,
+    // paddingRight:10,
+    color: colors.primary,
+    fontWeight:'bold'
   },
-  imgContainer:{
-    backgroundColor:colors.lightBackground,
-    paddingHorizontal:10
-    // padding:5,
-  }
+  priceView:{
+    backgroundColor:colors.primary,
+    position:'absolute',
+    bottom:0,
+    right:0,
+    paddingHorizontal:20,
+    flexDirection:'row',
+    paddingVertical: 10,
+    borderTopLeftRadius:20,
+    borderBottomLeftRadius:20,
+    borderBottomRightRadius:20
+  },
+  Ndesc: {
+    color: colors.primary,
+    marginVertical: 5,
+    fontFamily: fonts.primaryBold,
+    fontSize: 20,
+    flex:1,
+    // fontWeight:'bold',
+
+  },
+  NquantityView: {
+    backgroundColor: colors.secondary,
+    padding: 5,
+    borderRadius: 10,
+    marginRight: 10,
+    marginVertical: 5,
+    flexDirection:'row'
+  },
+  Nquantity: {
+    justifyContent: 'center',
+    marginHorizontal: 5,
+    fontFamily: fonts.primaryBold,
+  },
+  Nicon: {
+    fontSize: 24,
+    color: colors.primary,
+  },
 });

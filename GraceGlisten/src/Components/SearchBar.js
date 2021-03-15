@@ -21,7 +21,7 @@ export default function SearchBar(props) {
   return (
     <View style={[styles.container, props.containerStyle]}>
       <View style={styles.iconView}>
-        <Icon name="search1" size={24} color={colors.secondary}></Icon>
+        <Icon name="search1" size={24} color={colors.primary}></Icon>
       </View>
       {!disabled ? (
         <TextInput
@@ -38,7 +38,7 @@ export default function SearchBar(props) {
                 onPress();
               }
             }}>
-            <View style={{ ...styles.textInput,  justifyContent: 'center' }}>
+            <View style={{ ...styles.textInput,  justifyContent: 'center', backgroundColor:colors.lightBackground, }}>
               {/* <View style={styles.iconView}>
                 <Icon name="search1" size={24} color={colors.secondary}></Icon>
               </View> */}

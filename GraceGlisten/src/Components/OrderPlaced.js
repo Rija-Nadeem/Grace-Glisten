@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Modal, Text, View, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Navigator from '../utils/Navigator';
 import {colors, fonts, metrics} from '../utils/Theme';
 
@@ -14,18 +14,18 @@ export default class OrderPlaced extends Component {
         <View style={styles.modalView}>
           <View style={styles.centeredView}>
             <View style={styles.iconView}>
-              <Icon name="check" color={'white'} size={54} />
+              <Icon name="marker-check" color={colors.primary} size={100} />
             </View>
             <Text style={styles.title}>
-              Thank you for shopping!
+              Thankyou Your Order Has Been Confirmed!
             </Text>
-            <Text style={[styles.title,{fontSize:16}]}>
-              Your order has been received successfully.
-            </Text>
+            {/* <Text style={[styles.title,{fontSize:16, marginTop:0, marginBottom:10}]}>
+              Thankyou for placing order
+            </Text> */}
             <Text style={styles.smalltitle}>
-              You will receive a confirmation call or email shortly.
+              Please check your email for more details. You will soon recieve your order.
             </Text>
-            <View style={{borderRadius: 10, overflow: 'hidden',marginVertical:10}}>
+            <View style={{overflow: 'hidden',marginTop:10}}>
               <Text onPress={this.props.onPress} style={styles.button}>Ok</Text>
             </View>
           </View>
@@ -53,16 +53,16 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    padding: 20,
+    // padding: 20,
   },
   iconView: {
-    backgroundColor: colors.primary,
-    width: 100,
-    height: 100,
+    // backgroundColor: colors.primary,
+    // width: 100,
+    // height: 100,
     alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-    alignSelf: 'center',
+    // justifyContent: 'center',
+    // borderRadius: 50,
+    // alignSelf: 'center',
     marginVertical: 20,
   },
   title: {
@@ -70,20 +70,23 @@ const styles = StyleSheet.create({
     fontFamily: fonts.secondaryBold,
     textAlign: 'center',
     marginVertical: 5,
-    fontWeight:'bold'
+    fontWeight:'bold',
+    paddingHorizontal:20
     // lineHeight: 32,
   },
   smalltitle:{
     fontSize: 16,
     textAlign: 'center',
     marginVertical: 7,
+    paddingHorizontal:20
   },
   button: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     fontWeight:'bold',
-    color: colors.primary,
-    padding: 10,
-    borderRadius: 10,
+    color: colors.secondary,
+    padding: 15,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
     textAlign: 'center',
     fontSize: 18,
     fontFamily: fonts.secondaryBold,

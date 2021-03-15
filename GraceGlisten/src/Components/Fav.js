@@ -18,21 +18,24 @@ class Fav extends Component {
         onPress={() => this.props.addFav(this.props.item)}
         style={{
           backgroundColor: 'transparent',
-          width: 40,
-          height: 40,
-          borderRadius: 20,
-          alignItems: 'center',
-          justifyContent: 'center',
-          alignSelf:'flex-end',
-          marginHorizontal:20,
-          position:'absolute',
+          // width: 40,
+          // height: 40,
+          // borderRadius: 20,
+          // alignItems: 'center',
+          // justifyContent: 'center',
+          // alignSelf:'flex-end',
+          // marginHorizontal:15,
+          // marginVertical:10,
+          // flexDirection:'row-reverse',
+          // flex:1,
+          // position:'absolute',
           ...this.props.style,
         }}>
         <Icon
-          name={'heart'}
+          name={!this.props.isFav ? 'heart-multiple-outline': 'heart-multiple'}
           style={{
             fontSize: 22,
-            color: this.props.isFav ? colors.secondary :'white'
+            color: colors.primary
           }}
         />
       </TouchableOpacity>

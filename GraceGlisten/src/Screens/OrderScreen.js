@@ -10,7 +10,7 @@ import {
   Image,
   ImageBackground
 } from 'react-native';
-import bg from '../../assets/images/bg2.png';
+// import bg from '../../assets/images/bg2.png';
 
 
 import {CartItem, Header, Input, Wrapper} from '../Components';
@@ -72,7 +72,7 @@ class OrderScreen extends Component {
                 </View>
                 <View style={styles.info}>
                     <Text style={styles.title}>Total</Text>
-                    <Text style={[styles.title]}>
+                    <Text style={[styles.title, {color: colors.primary}]}>
                     ${parseInt(this.props.cart.totalPrice) * this.state.quantity}
                     </Text>
                 </View>
@@ -123,13 +123,13 @@ const styles = StyleSheet.create({
     fontFamily: fonts.secondaryBold,
     fontSize: 18,
     fontWeight:'bold',
-    color:colors.white
+    color:'black'
     
   },
   text: {
     fontFamily: fonts.secondary,
     fontSize: 16,
-    color: colors.secondary,
+    color: colors.primary,
   },
   buttonText: {
     color: colors.primary,

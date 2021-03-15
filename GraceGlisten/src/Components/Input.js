@@ -104,7 +104,7 @@ class Input extends Component {
             maxLength={maxLength}
             underlineColorAndroid="transparent"
             placeholder={!isFocused && !showError ? placeholder : null}
-            placeholderTextColor={placeholderTextColor || colors.grey}
+            placeholderTextColor={placeholderTextColor || colors.primary}
             autoCapitalize="none"
             onChangeText={this.props.onChangeText}
             secureTextEntry={secureTextEntry}
@@ -134,20 +134,22 @@ const styles = StyleSheet.create({
   inputStyle: {
     fontSize: 14,
     textAlign: 'left',
-    borderColor: colors.secondary,
-    borderWidth: 1,
+    borderBottomColor: colors.grey,
+    borderBottomWidth: 1,
     paddingHorizontal: 15,
     paddingVertical: 5,
     height: 45,
-    backgroundColor: 'white',
+    backgroundColor: colors.secondary,
     borderRadius: 10,
+    color:colors.primary
   },
   label: {
-    color: colors.secondary,
+    color: 'black',
     marginVertical: 10,
     fontWeight: 'bold',
     fontSize: 16,
-    fontFamily:fonts.primary
+    fontFamily:fonts.primary,
+    paddingLeft:10
   },
   errorField: {
     borderColor: colors.secondary,

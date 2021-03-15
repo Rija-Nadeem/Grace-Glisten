@@ -2,246 +2,205 @@ export default {
     "category": [
         {
             "id": "1",
-            "name": "tables"
+            "name": "Oriental candle"
         },
         {
             "id": "2",
-            "name": "chairs"
+            "name": "birthday candle"
         },
         {
             "id": "3",
-            "name": "lamp"
+            "name": "scented candles"
         },
         {
             "id": "4",
-            "name": "Wall Clock"
-        },
-        {
-            "id": "5",
-            "name": "Vases"
+            "name": "unscented candles"
         }
     ],
     "items": [
         {
             "id": "1",
             "categoryid": "1",
-            "name": "Dining Room ",
-            "price": "144.99",
+            "name": "Prime Oriental Candle",
+            "image": require('./assets/images/can1.png'),
+            "description": "A ceramic casing explores shape and structure while the monochrome colourway allows light and shadow to further accentuate the delicate facets of the piece.",
+            "price": "75",
             recommended:true,
-            "image": require('./assets/images/tb1.png'),
-            "height": "3.15",
-            "description": "Turned legs blend beautifully with the warm wood farmhouse-style tabletop, creating an elegant look with a casual feel"
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "2",
             "categoryid": "1",
-            "name": "Oscar Corner Table",
-            "price": "151.26",
-            "image": require('./assets/images/tb2.png'),
-            "height": "3.1",
-            "description": "Expertly Constructed Table Made from Walnut Solid Wood and Veneers for High-Quality Long-Lasting Dining Room Furniture"
+            "name": "Pink oriental candle",
+            "image": require('./assets/images/can2.png'),
+            "description": "Sensual and chic, this oriental fragrance makes us travel to the land of the Arabian Nights. Like a haunting dance in a hot, spicy and flowery breath, the candle diffuses volutes of jasmine, rose, sandalwood, patchouli and amber. At sunset in the starry night, this candle fills us with love",
+            "price": "65",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "3",
             "categoryid": "1",
-            "name": "Dual Drop Leaf Dining ",
-            "price": "191.52",
-            "image": require('./assets/images/tb3.png'),
-            "height": "3.13",
-            "description": "Solid wood construction for long lasting durability Butcher block top surface Standard height for chairs Distance from top to bottom apron is 2 1/2\"Great additional to your home"
+            "name": "Marie Antoinette candle",
+            "image": require('./assets/images/can3.png'),
+            "description": "A bucolic stroll through a secret garden where time stands still. The mind wanders in melancholic reverie, capturing the very essence of nature. It reveals the everlasting emotion of a young queen enamoured with freedom and beauty. A very elegant, light and fresh floral trail lingers in its wake. An ode to a queen.",
+            "price": "65",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "4",
             "categoryid": "1",
-            "name": "Round Dual Drop Leaf Ped",
-            "price": "195.5",
-            "image": require('./assets/images/tb4.png'),
-            "height": "3.15",
-            "description": "Solid wood,Easy to assemble,Dual drop leaf,Rated for residential use only, not intended for commercial use"
+            "name": "Flameless LED Candles",
+            "image": require('./assets/images/can4.png'),
+            "description": "Enjoy the warm, ambient light provided by our Flameless LED Candles without having to worry about flames or hot wax! Our battery operated, Flameless Candles with Oriental Line Design are truly unique",
+            "price": "28",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "5",
             "categoryid": "1",
-            "name": "DHP Fusion Metal Square Dining Table",
-            "price": "200.15",
-            "image": require('./assets/images/tb5.png'),
-            "height": "3.17",
-            "description": "Vintage design with solid metal legs offering an industrial loft style feel. Ideal spot to share a lovely meal at home Durable elm wood square dining table top"
+            "name": "Sapin Dore Mini Candle",
+            "image": require('./assets/images/can5.png'),
+            "description": "Get ready to feel happy and excited about Christmas because you won’t have any choice once you have smelt this candle!",
+            "price": "40",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "6",
             "categoryid": "2",
-            "name": "Century Side Chair",
-            "price": "75.15",
-            "image": require('./assets/images/ch1.png'),
-            recommended:true,
-            "height": "3.15",
-            "description": "Ergonomic design of perfect height & curved seat supports user’s back well in sitting and leads to an easy conversations"
+            "name": "Birthday Candle 1 to 18",
+            "image": require('./assets/images/can6.png'),
+            "description": "These unscented white birthday candles have a numbered decal that counts down from 1 to 18. The unique birthday candles make great baby shower or first birthday gifts. Each year at the birthday party, light the candle and let it burn down to the next number.",
+            "price": "32",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "7",
             "categoryid": "2",
-            "name": "Bold Tones",
-            "price": "105",
-            "image": require('./assets/images/ch2.png'),
-            "height": "3.1",
-            "description": "the chair seat and backrest are molded with a lattice shaped cut out polypropylene (PP) plastic, a sturdy recyclable material. The sturdy steel legs are made with metal color"
+            "name": "Musical Flower Birthday Candle",
+            "image": require('./assets/images/can7.png'),
+            "description": "This pink musical birthday candle will amaze everyone at the party, both young and old alike. The musical candle starts off looking like a closed flower bud. When the center of the flower candle is ignited the show begins. Initially there is a single large flame which lights all 14 of the smaller candles on each flower petal. Then the musical flower candle pops open and begins to spin slowly while playing the Happy Birthday tune.",
+            "price": "12",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "8",
             "categoryid": "2",
-            "name": "Plastic Arm Chair",
-            "price": "85",
-            "image": require('./assets/images/ch3.png'),
-            "height": "3.13",
-            "description": " In trying to replicate the original chairs at high quality, our chairs come with curve seats and integrated backrests and armrest to fit your hip, back and arms better in accordance with the design concept of chairs"
+            "name": "Musical Birthday Candles Soccer Ball",
+            "image": require('./assets/images/can8.png'),
+            "description": "This soccer musical birthday candle will amaze everyone at the party, both young and old alike. The musical candle starts off looking like a closed flower bud. When the center of the flower candle is ignited the show begins. Initially there is a single large flame which lights all 8 of the smaller candles on each flower petal. Then the musical flower candle pops open and begins to spin slowly while playing the Happy Birthday tune. Eventually the candle will slow down and stop spinning.",
+            "price": "12",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "9",
             "categoryid": "2",
-            "name": " Rivet Henrik",
-            "price": "113",
-            "image": require('./assets/images/ch4.png'),
-            "height": "3.15",
-            "description": "This modern open-backed chair with its stylish European design easily complements many dining room tables. Its professional look makes it an excellent fit in an office or living room as well. Made of sturdy beech, steel, and plastic, it will last and adapt to any changes in the surrounding decor"
+            "name": "Musical Birthday Candles Football",
+            "image": require('./assets/images/can9.png'),
+            "description": "These football musical birthday candles are a great addition to the party any time of year but are even a bigger hit during the football season. Light up one of these unique candles at your next party and watch how your guests smile. The football musical birthday candle starts off closed up in the shape of the ball, hiding the candles inside. Once the candle is lit, the large center flame lights the 8 small birthday candles which are attached to each of the 8 panels of the ball.",
+            "price": "12",
+            recommended:true,
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "10",
-            "categoryid": "3",
-            "name": "Oneach Modern Table Lamp",
-            "price": "59",
-            "image": require('./assets/images/la1.png'),
-            "height": "1.17",
-            "voltage": "150A",
-            recommended:true,
-            "description": " Constructed of high-quality metal lamp base and fabric shade,the table lamp set of 2 add a touch of elegance and stylish to your house,great to be used as bedside lamp,night light lamp,reading light,living room lamp,"
+            "categoryid": "2",
+            "name": "Happy Birthday Scented Candle",
+            "image": require('./assets/images/can10.png'),
+            "description": "So simple, so pretty, so perfect! A bubbly, gentle, sweet scent that’s impossible not to love. For a Happy Bestest Birthday",
+            "price": "14",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "11",
             "categoryid": "3",
-            "name": "Isabella Lamps",
-            "price": "56",
-            "image": require('./assets/images/la2.png'),
-            "height": "1.17",
-            "voltage": "155A",
-            "description": "This shapely turned set of two matching table lamps feature a rich oil rubbed bronze finish and tapered cream drum shades. This casual design perfectly complements your existing traditional, transitional, and contemporary home decor"
+            "name": "Jar Scented Candle",
+            "image": require('./assets/images/can11.png'),
+            "description": "The Volcano scent smells like tropical fruits, sugared oranges, and citrus. If you can't go on a beach vacation, this is the next closest thing.",
+            "price": "35",
+            recommended:true,
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "12",
             "categoryid": "3",
-            "name": "Metal Table Lamp",
-            "price": "105",
-            "image": require('./assets/images/la3.png'),
-            "height": "1.15",
-            "voltage": "145A",
-            "description": "legance that's a cut above the rest. This table lamp is enchanting bedside, or in an office study OPEN-CONCEPT DESIGN: The base has an open design with long, vertical cutouts that catch the eye. Made of metal with a fabric hardback shade and simple 3-way switch"
+            "name": "Ombre Bergamot Musk Candle",
+            "image": require('./assets/images/can12.png'),
+            "description": "This sunset-hued candle is perfect for winter. And then once you've burned up all the wax, you can use it as a tumbler or catch-all.",
+            "price": "35",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "13",
             "categoryid": "3",
-            "name": "Oneach 24",
-            "price": "95",
-            "image": require('./assets/images/la4.png'),
-            "height": "1.1",
-            "voltage": "140A",
-            "description": "With clean, simple lines,the table lamps set of 2 will excellently illuminate any desk or nightstand. Classical design adds a touch of classicality & elegance to any room."
+            "name": "Coconut Milk Mango Mojave",
+            "image": require('./assets/images/can13.png'),
+            "description": "With ombre layers of peach and pink, this candle calls to mind the rock formations of the Mojave Desert. The thick glass vessel is filled with long-burning soy wax scented with the delicious tropical notes of coconut milk, mango, papaya, pineapple, sugarcane and Tahitian vanilla.",
+            "price": "32",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "14",
             "categoryid": "3",
-            "name": "Deidra Metal Table Lamp",
-            "price": "119",
-            "image": require('./assets/images/la5.png'),
-            "height": "1.5",
-            "voltage": "150A",
-            "description": "if you have a penchant for soft lighting and ultra modern decor, look no further than these lamps. Linear lines add to the clean, chic aesthetic in your room"
+            "name": "Small scented candle",
+            "image": require('./assets/images/can14.png'),
+            "description": "This black glass Lip Balm candle is the latest addition to Anya Hindmarch's ‘Anya Smells’ collection – a selection of lifestyle-scented candles. This cherry sticker-embellished iteration is inspired by first kisses, made in the UK.",
+            "price": "35",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "15",
-            "categoryid": "4",
-            "name": "Stonebriar Vintage",
-            "price": "19",
-            "image": require('./assets/images/clo1.png'),
-            "height": "0.6",
-            "voltage": "1.5A",
-            recommended:true,
-            "description": "This unique clock measures 14\" diameter and is the perfect size for the kitchen, living room, office, or bedroom"
+            "categoryid": "3",
+            "name": "Paddywax scented candle",
+            "image": require('./assets/images/can15.png'),
+            "description": "Hand-poured soy wax fills the mouth-blown glass container rimmed in tropical orange. Once the candle has burned away, the unique vessel serves as a festive margarita glass",
+            "price": "28",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "16",
             "categoryid": "4",
-            "name": "ShuaXin",
-            "price": "22",
-            "image": require('./assets/images/clo2.png'),
-            "height": "0.8",
-            "voltage": "1.5A",
-            "description": ":Using high-quality Taiwan SUN 12888 scanning quartz movement can not only keep the clock silent without annoying ticking sound,but also guarantee more smooth turning of clock hands,thus ensuring accurate time and a longer working life of the clock."
+            "name": "Melt Candle",
+            "image": require('./assets/images/can16.png'),
+            "description": "We Hand Pour Every Candle. Clean Burning Wax. Lead-free Cotton Wicks. Dripless & Smokeless. Unscented. Burn Time: 70h.",
+            "price": "20",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "17",
             "categoryid": "4",
-            "name": "Rustic Galvanized Metal Cut Out",
-            "price": "65",
-            "image": require('./assets/images/clo3.png'),
-            "height": "0.7",
-            "voltage": "1.5A",
-            "description": "This rustic wall clock features farmhouse style and elegant embellishments Round wall clock is constructed of metal planks that features a distressed weathered finished for a vintage feel"
+            "name": "White Unscented candle",
+            "image": require('./assets/images/can17.png'),
+            "description": "White unscented candle in glass votive that will burn for 10 hours, excellent quality, great product and good price.",
+            "price": "29",
+            recommended:true,
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "18",
             "categoryid": "4",
-            "name": "KZEMATLI",
-            "price": "45",
-            "image": require('./assets/images/clo4.png'),
-            "height": "0.6",
-            "voltage": "1.5A",
-            "description": "crylic, Oil Painting Dial, No Frame Design: Silent Non-Ticking Round Wall Clock(1 \"\"Aa\"\" Battery Is Required, Not Included)"
+            "name": "Brass Unscented Candle",
+            "image": require('./assets/images/can18.png'),
+            "description": "Stylodeco’s brass candles are a chic addition to any living space. They bring warmth and elegance to the home.",
+            "price": "29",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "19",
-            "categoryid": "5",
-            "name": "White Glazed Ceramic Flower",
-            "price": "15",
-            "image": require('./assets/images/vas1.png'),
-            "height": "1.3",
-            recommended:true,
-            "description": "Special handle Style, made of high quality glazed ceramic, high gloss finish. Presenting the unique style of porcelain, the vase adds artistic flavor to your interior decoration."
+            "categoryid": "4",
+            "name": "Geometric Unscented Candle",
+            "image": require('./assets/images/can19.png'),
+            "description": "This unique geometric candle is a great candle and perfect for decorating! It is unscented and has beautiful colors!",
+            "price": "32",
+            "bgcolor": "#FDFEFE"
         },
         {
             "id": "20",
-            "categoryid": "5",
-            "name": "ufengke",
-            "price": "11",
-            "image": require('./assets/images/vas2.png'),
-            "height": "1",
-            "description": " If you receive the product with broken, please take photos and contact us after receive the parcel. We will response and arrange the second shipping or refund very soon. We support to do wholesale, OEM and ODM"
-        },
-        {
-            "id": "21",
-            "categoryid": "5",
-            "name": "Lenox Sprig & Vine Tall Vase",
+            "categoryid": "4",
+            "name": "Mason Jar Unscented Candle",
+            "image": require('./assets/images/can20.png'),
+            "description": "Our simple unscented mason jar candle fits well with any decor. Whether you need a candle simply for ambiance or you need a safety candle for when the power goes out, these unscented candles are the perfection option!",
             "price": "20",
-            "image": require('./assets/images/vas3.png'),
-            "height": "1.1",
-            "description": "With beautifully carved high-relief details, this deep navy vase from the Sprig & Vine collection will make a dramatic statement in any room. Place on a side table or vanity to add an extra flair to your decor. Give with flowers for the perfect gift]At Lenox"
-        },
-        {
-            "id": "22",
-            "categoryid": "5",
-            "name": "Emissary Home & Garden Brown",
-            "price": "21",
-            "image": require('./assets/images/vas4.png'),
-            "height": "1.2",
-            "description": "ceramic. No assembly required. Manufactured in China. Home decorative product.."
-        },
-        {
-            "id": "23",
-            "categoryid": "5",
-            "name": "Plutus Brands Royal",
-            "price": "19",
-            "image": require('./assets/images/vas5.png'),
-            "height": "1",
-            "description": "Made from metal this glass mosaic Vase Features a floral pattern in silver on its neck and the regular pot shaped body portrays delicate work of weaved style design in shade of red against a glossy gold background. This Vase also Features two curved handles for easy handling"
+            "bgcolor": "#FDFEFE"
         }
     ],
     "color": [

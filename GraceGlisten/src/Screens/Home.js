@@ -9,7 +9,7 @@ import {
   SearchBar,
   Wrapper,
 } from '../Components';
-import bg from '../../assets/images/bg2.png';
+// import bg from '../../assets/images/bg2.png';
 import {colors, fonts, metrics} from '../utils/Theme';
 import data from '../../data';
 import Category from '../Components/Category';
@@ -72,34 +72,33 @@ class Home extends Component {
           bounces={false}
           showsVerticalScrollIndicator={false}>
 
-          <View style={{flexDirection:'row', justifyContent:'space-between', margin:metrics.defaultMargin, marginBottom:0}}>
-            <Icon2
-              onPress={() => Navigator.navigate('Search')}
-              name="search1"
-              style={styles.icon}
-              color={'red'}
-
-            />
+          <View style={styles.headingContainer}>
+            <Text style={{
+              
+                fontFamily: fonts.primary,
+                fontSize: 28,
+                fontWeight:'bold',
+                // margin: metrics.defaultMargin,
+                // marginRight: metrics.width * 0.35,
+                marginBottom:5,
+                color: colors.white,
+              
+            }}>
+              Candles
+            </Text>
             <Icon
               onPress={() => Navigator.navigate('Order')}
               name="cart"
               style={styles.icon}
-              color={'red'}
             />
           </View>
-            
-            <View style={{}}>
-              <Text style={styles.heading}>
-                <Text style={{fontFamily: fonts.primaryBold}}>Furniture in</Text>{' '}
-                <Text style={{fontFamily: fonts.primaryBold}}>Unique Style</Text>{' '}
-              </Text>
-            </View>
+{/*             
           <Text style={styles.des}>
               We have wide range of furnitures
-          </Text>
-          {/* <SearchBar
-          containerStyle={{marginTop:40}}
-           textInput={{color: colors.primary}} disabled /> */}
+          </Text> */}
+          <SearchBar
+          // containerStyle={{marginTop:40}}
+           textInput={{color: 'red'}} disabled />
 
           <View style={{marginTop:10}}>
             <HorizontalList
@@ -152,7 +151,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight:'bold',
     margin: metrics.defaultMargin,
-    marginRight: metrics.width * 0.35,
+    // marginRight: metrics.width * 0.35,
     marginBottom:5,
     color: colors.white,
   },
@@ -162,8 +161,6 @@ const styles = StyleSheet.create({
     margin: metrics.defaultMargin,
     color: colors.white,
     fontWeight:'bold',
-
-
   },
   category: {
     transform: [{rotate: '270deg'}],
@@ -207,6 +204,19 @@ const styles = StyleSheet.create({
     // top: metrics.defaultMargin,
     fontSize: 32,
     color: colors.primary,
+    // marginRight: metrics.defaultMargin,
+  },
+  headingContainer:{
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    margin: metrics.defaultMargin,
+    marginBottom:0,
+    // marginVertical:0,
+    // flex:1,
+    // borderColor:'red',
+    // borderWidth:1
   },
 });
 

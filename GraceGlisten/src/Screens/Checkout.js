@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -7,25 +7,22 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   Image,
-  Dimensions,
-  ImageBackground
 } from 'react-native';
-import { CartItem, Header, Input, Wrapper } from '../Components';
-import { colors, fonts, metrics } from '../utils/Theme';
-import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
+
+import {CartItem, Header, Input, Wrapper} from '../Components';
+import {colors, fonts, metrics} from '../utils/Theme';
+import {SafeAreaInsetsContext} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Navigator from '../utils/Navigator';
 
 import Validation from '../utils/Validation';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Toast from '../utils/Toast';
 import OrderPlaced from '../Components/OrderPlaced';
-import { BarIndicator } from 'react-native-indicators';
-import { connect } from 'react-redux';
-import { addItem, deleteItem, emptyCart } from '../Redux/actions';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import { Fumi } from 'react-native-textinput-effects';
-
+import {BarIndicator} from 'react-native-indicators';
+import {connect} from 'react-redux';
+import {addItem, deleteItem, emptyCart} from '../Redux/actions';
+import Cart from '../../assets/images/cart.png';
 
 class Checkout extends Component {
   constructor(props) {
@@ -39,8 +36,8 @@ class Checkout extends Component {
   }
 
   onChange(name, val) {
-   // console.log({ [name]: val });
-    this.setState({ [name]: val });
+    console.log({[name]: val});
+    this.setState({[name]: val});
   }
 
   focusNextField(id) {
@@ -48,7 +45,7 @@ class Checkout extends Component {
   }
 
   async apiCall() {
-    this.setState({ loading: true });
+    this.setState({loading: true});
     const res = await fetch('https://reactnativeapps.herokuapp.com/customers', {
       method: 'POST',
       headers: {
@@ -61,14 +58,14 @@ class Checkout extends Component {
         address: this.state.phoneNumber,
         slotdatetime: new Date().toString(),
         email: this.state.email,
-        appname: 'Mount Journey',
+        appname: 'Grace Glisten',
         item: JSON.stringify(this.props.cart.items),
       }),
     });
 
     const response = await res.json();
-    this.setState({ loading: false });
-    if (response.status) this.setState({ visible: true });
+    this.setState({loading: false});
+    if (response.status) this.setState({visible: true});
     else Toast('Some error occurred');
   }
 
@@ -88,7 +85,7 @@ class Checkout extends Component {
     if (!Validation.isValidField(this.state.address || '')) {
       return Toast('Please Enter Address');
     }
-    if (!Validation.isValidField(this.state.phonenumber || '')) {
+    if (!Validation.isValidField(this.state.phoneNumber || '')) {
       return Toast('Please Enter Valid Phone Number');
     }
 
@@ -97,194 +94,120 @@ class Checkout extends Component {
 
   render() {
     return (
-      <Wrapper bottom={0}>
+      <Wrapper bottom={0} >
+        <Header textStyle={{fontWeight:'bold'}} title="Customer Details" />
 
-          <Header textStyle={{fontWeight:'bold'}} title="Personal Details" />
-
-          <OrderPlaced
-            visible={this.state.visible}
-            // visible={true}
-
-            onPress={() => {
-              this.setState({ visible: false },()=>{
-                this.props.emptyCart();
-                Navigator.navigateAndReset('Home');
-
-              });
-            }}
-          />
-          <KeyboardAwareScrollView
-            bounces={false}
-            style={{
-              flex: 1,
-              paddingHorizontal: metrics.defaultMargin,
-              paddingTop:40,
-              paddingLeft:metrics.largeMargin
-            }}>
-              <Fumi
-                label={'First Name'}
-                iconClass={FontAwesomeIcon}
-                iconName={'user'}
-                iconColor={colors.secondary}
-                iconSize={20}
-                iconWidth={40}
-                inputPadding={16}
-                labelStyle={{
-                  color: colors.primary,
-                  paddingTop:0
+        <OrderPlaced
+          visible={this.state.visible}
+          // visible={true}
+          onPress={() => {
+            this.setState({visible: false});
+            this.props.emptyCart();
+            Navigator.navigateAndReset('Home');
+          }}
+        />
+            <KeyboardAwareScrollView
+              bounces={false}
+              style={{
+                flex: 1,
+                paddingHorizontal: metrics.defaultMargin,
+                // backgroundColor:colors.primary
+              }}>
+              <Input
+                required
+                placeholder="First Name"
+                label="First name"
+                textValue={this.state.fname}
+                returnKeyType="next"
+                onRef={(ref) => {
+                  this.inputs['fname'] = ref;
                 }}
-                borderColor={'green'}
-                color={'blue'}
-                inputStyle={{ paddingRight: 36, color: colors.grey, fontWeight: 'normal',fontFamily: fonts.secondary }}
                 onChangeText={(text) => {
                   this.onChange('fname', text);
                 }}
                 onSubmitEditing={() => {
                   this.focusNextField('lname');
                 }}
-                ref={ref => this.inputs['fname'] = ref}
-                value={this.state.fname}
-                returnKeyType="next"
               />
-              <Fumi
-                label={'Last Name'}
-                iconClass={FontAwesomeIcon}
-                iconName={'user'}
-                iconColor={colors.secondary}
-                iconSize={20}
-                iconWidth={40}
-                inputPadding={16}
-                labelStyle={{
-                  color: colors.primary,
-                  paddingTop:0
+              <Input
+                required
+                placeholder="Last Name"
+                label="Last name"
+                textValue={this.state.lname}
+                returnKeyType="next"
+                onRef={(ref) => {
+                  this.inputs['lname'] = ref;
                 }}
-                borderColor={'green'}
-                color={'blue'}
                 onChangeText={(text) => {
                   this.onChange('lname', text);
                 }}
                 onSubmitEditing={() => {
                   this.focusNextField('email');
                 }}
-                style={{
-                  marginVertical: 10
-                }}
-                ref={ref => this.inputs['lname'] = ref}
-                value={this.state.lname}
+              />
+              <Input
+                required
+                placeholder="Email"
+                label="Email"
+                keyboardType={'email-address'}
+                textValue={this.state.email}
                 returnKeyType="next"
-                inputStyle={{ paddingRight: 36, color: colors.grey, fontWeight: 'normal',fontFamily: fonts.secondary }}
-                />
-                <Fumi
-                  label={'Email'}
-                iconClass={FontAwesomeIcon}
-                iconName={'envelope'}
-                iconColor={colors.secondary}
-                iconSize={20}
-                iconWidth={40}
-                inputPadding={16}
-                labelStyle={{
-                  color: colors.primary,
-                  paddingTop:0
+                onRef={(ref) => {
+                  this.inputs['email'] = ref;
                 }}
-                borderColor={'green'}
-                color={'blue'}
-                value={this.state.email}
                 onChangeText={(text) => {
                   this.onChange('email', text);
                 }}
                 onSubmitEditing={() => {
-                  this.focusNextField('phonenumber');
+                  this.focusNextField('phoneNumber');
                 }}
-                style={{
-                  marginVertical: 10
+              />
+              <Input
+                required
+                placeholder="Mobile Number"
+                label="Mobile No."
+                textValue={this.state.phoneNumber}
+                returnKeyType="next"
+                onRef={(ref) => {
+                  this.inputs['phoneNumber'] = ref;
                 }}
-                ref={ref => this.inputs['email'] = ref}
-                inputStyle={{ paddingRight: 36, color: colors.grey, fontWeight: 'normal',fontFamily: fonts.secondary }}
-                />
-                 <Fumi
-                  label={'Phone Number'}
-                iconClass={FontAwesomeIcon}
-                iconName={'phone'}
-                Inputtype='Numeric' 
-                iconColor={colors.secondary}
-                iconSize={20}
-                iconWidth={40}
-                inputPadding={16}
-                labelStyle={{
-                  color: colors.primary,
-                  paddingTop:0
-                }}
-                borderColor={'green'}
-                color={'blue'}
-                value={this.state.phonenumber}
                 onChangeText={(text) => {
-                  this.onChange('phonenumber', text);
+                  this.onChange('phoneNumber', text);
                 }}
+                keyboardType={'phone-pad'}
                 onSubmitEditing={() => {
                   this.focusNextField('address');
                 }}
-                style={{
-                  marginVertical: 10
+              />
+              <Input
+                required
+                placeholder="Address"
+                label="Address"
+                textValue={this.state.address}
+                onRef={(ref) => {
+                  this.inputs['address'] = ref;
                 }}
-                ref={ref => this.inputs['phonenumber'] = ref}
-                inputStyle={{ paddingRight: 36, color: colors.grey, fontWeight: 'normal',fontFamily: fonts.secondary }}
-                />
-                 <Fumi
-                  label={'Address'}
-                iconClass={FontAwesomeIcon}
-                iconName={'home'}
-                iconColor={colors.secondary}
-                iconSize={20}
-                iconWidth={40}
-                inputPadding={16}
-                labelStyle={{
-                  color: colors.primary,
-                  paddingTop:0
-                }}
-                borderColor={'green'}
-                color={'blue'}
-                value={this.state.address}
                 onChangeText={(text) => {
                   this.onChange('address', text);
                 }}
-                // onSubmitEditing={() => {
-                //   this.focusNextField('lname');
-                // }}
                 multiline={true}
-                numberOfLines={5}
-                // style={{
-                //   marginVertical: 10
-                // }}
-                ref={ref => this.inputs['address'] = ref}
-                inputStyle={{ paddingRight: 36, color: colors.grey, fontWeight: 'normal',fontFamily: fonts.secondary }}
-                />
-           
-
-          </KeyboardAwareScrollView>
-            <SafeAreaInsetsContext.Consumer>
-              {(insets) => (
-                <TouchableWithoutFeedback
-                onPress={() => {
-                  this.onButtonPress();
-                }}>
-                <View
-                  style={{ flexDirection: 'row', justifyContent: 'center' }}
-                >
-                  <View onPress={this.props.onPress} style={[styles.button, { overflow: 'hidden' }]}>
-                    {this.state.loading ? (
-                        <View style={styles.bar}>
-                          <BarIndicator color={colors.primary} size={24} />
-                        </View>
-                      ) : (
-                          <Text style={styles.buttonText} >Checkout</Text>
-                      )}
-                  </View>
-  
-                </View>
-              </TouchableWithoutFeedback>
-              )}
-            </SafeAreaInsetsContext.Consumer>
-
+                inputStyle={{height: 100}}
+              />
+            <TouchableWithoutFeedback
+              onPress={() => {
+                this.onButtonPress();
+              }}>
+              <View onPress={this.props.onPress} style={[styles.button,{ overflow: 'hidden'}]}>
+                {this.state.loading ? (
+                  <BarIndicator color="white" size={24} />
+                ) : (
+                  <Text style={styles.buttonText} >Checkout</Text>
+                )}
+              </View>
+            </TouchableWithoutFeedback>
+        
+            </KeyboardAwareScrollView>
+     
       </Wrapper>
     );
   }
@@ -295,41 +218,25 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primaryBold,
     fontSize: 28,
     marginVertical: metrics.defaultMargin,
-    fontWeight: 'bold',
+    fontWeight:'bold',
   },
   buttonView: {
-    // backgroundColor: colors.secondary,
-    // flexDirection: 'row',
-    // padding: 20,
-    // justifyContent: 'space-between',
-    // borderTopStartRadius: 30,
-    // paddingHorizontal: 30,
-    // marginLeft: metrics.defaultMargin,
-    // minHeight: 80,
-
+    backgroundColor: colors.secondary,
+    flexDirection: 'row',
+    padding: 20,
+    justifyContent: 'space-between',
+    borderTopStartRadius: 30,
+    paddingHorizontal: 30,
+    marginLeft: metrics.defaultMargin,
+    minHeight: 80,
   },
   buttonText: {
-    color: colors.primary,
-    fontSize: 20,
-    fontWeight:'bold',
-    fontFamily: fonts.primaryBold,
+    color: 'white',
     textAlign: 'center',
-    borderRadius: 20,
-    paddingVertical:10
-  },
-  bar:{
-    padding: 12,
-    paddingVertical:22,
-    borderRadius: 20,
-    justifyContent:'center'
-  },
-  button: {
-    backgroundColor: colors.secondary,
-    padding: 10,
-    borderRadius: 20,
-    width: '80%',
-    marginVertical:metrics.defaultMargin
-
+    fontSize: 18,
+    fontFamily: fonts.secondaryBold,
+    fontWeight:'bold',
+    backgroundColor:colors.primary
   },
   iconView: {
     backgroundColor: 'rgb(255,255,255)',
@@ -354,13 +261,18 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.primaryBold,
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight:'bold',
   },
   text: {
     fontFamily: fonts.secondary,
     fontSize: 16,
   },
+  button: {
+    backgroundColor: colors.secondary,
+    padding: 10,
+    borderRadius: 10,
 
+  },
 });
 
 const mapStateToProps = (state) => {
@@ -369,6 +281,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addItem, deleteItem, emptyCart })(
+export default connect(mapStateToProps, {addItem, deleteItem, emptyCart})(
   Checkout,
 );

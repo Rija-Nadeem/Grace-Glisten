@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, version} from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import data from '../../data';
 import Navigator from '../utils/Navigator';
@@ -23,36 +23,41 @@ export default class FoodCard extends Component {
         activeOpacity={0.9}
         onPress={() => Navigator.navigate('ProductDetail',{item:this.props.item,category:this.props.category})}>
         <View>
-          <View style={[styles.outerCard, { flexDirection: index%2==0 ? 'row': 'row-reverse' }]}>
+          <View style={[styles.outerCard]}>
             <View style={styles.innerCard}>
-              <View style={[styles.content,{flexDirection: index%2==0 ? 'row-reverse': 'row',}]}>
+              <View style={[styles.content]}>
     
-                <View style={[styles.imageView,
-                  {
-                    paddingRight: index%2==0 ? metrics.smallMargin : 0, 
-                    paddingLeft: index%2==0 ? 0 : metrics.smallMargin, 
-
-                  }
-                  ]}>
+                <View style={[styles.imageView]}>
                   <Image source={image} style={styles.image} />
                 </View>
                 <View style={styles.details}>
+                  <View style={{
+                    flexDirection:'row',
+                    position:'absolute',
+                    top:10, right:15
+                  }}>
+                        {/* <Icon name="arrow-forward" color="white" size={24} /> */}
+                        <Fav isFav={isFav} item={this.props.item}/>
+                  </View>
                   <Text style={styles.name} numberOfLines={1} ellipsizeMode="tail">
                     {name}
                   </Text>
-                  <Text style={styles.desc} numberOfLines={2} ellipsizeMode="tail">
+                  <Text style={styles.desc} numberOfLines={1} ellipsizeMode="tail">
                     {description}
                   </Text>
-                  <Text style={styles.price}>
-                    ${price}
-                  </Text>
+                  <View style={styles.priceView} >
+                    <Text style={styles.price}>
+                      ${price}
+                    </Text>
+                      <Icon name="long-arrow-alt-right" color="white" size={24} />
+                  </View>
                 </View>
               </View>
             </View>
-            <View style={styles.iconView}>
+            {/* <View style={styles.iconView}> */}
               {/* <Icon name="plus" color="white" size={24} /> */}
-              <Fav isFav={isFav} item={this.props.item}/>
-            </View>
+              {/* <Fav isFav={isFav} item={this.props.item}/>
+            </View> */}
           </View>
 
           {/* <ImageBackground 
@@ -158,12 +163,15 @@ const styles = StyleSheet.create({
     height: 150,
     backgroundColor:'transparent',
     borderRadius:30,
-    paddingRight:metrics.smallMargin
+    paddingRight:metrics.smallMargin,
+    position:'absolute',
+    top:0,
+    left:-50
   },
   image: {
     width: '100%',
     height: '100%',
-    resizeMode:'contain'
+    resizeMode:'contain',
   },
   outerCard:{
     width: metrics.width *0.90,
@@ -172,27 +180,37 @@ const styles = StyleSheet.create({
     marginBottom: metrics.defaultMargin,
     borderRadius:30,
     display:'flex',
-    flexDirection:'row',
-    // flexDirection:'row-reverse',
+    // flexDirection:'row',
+    flexDirection:'row-reverse',
+    position:'relative',
+    top:0,
+    left:0
 
   },
   innerCard:{
-    width: metrics.width *0.80,
+    width: metrics.width *0.75,
     height:150,
     backgroundColor:colors.lightBackground,
     marginBottom: metrics.defaultMargin,
-    borderRadius:30,
+    // borderRadius:30,
+    borderTopRightRadius:30,
+    borderBottomRightRadius:30
     // alignItems:'center'
   },
   details:{
     backgroundColor:'transparent',
     flex:1,
     borderRadius:30,
-    padding: metrics.defaultMargin
+    paddingTop:40,
+    paddingLeft: 70,
+    position:'relative',
+    top:0,
+    left:0
   },
   content:{
     flex:1,
-    backgroundColor:'transparent'
+    backgroundColor:'transparent',
+    flexDirection:'row',
   },
   name:{
     fontSize:18,
@@ -208,8 +226,22 @@ const styles = StyleSheet.create({
     fontFamily: fonts.secondary,
   },
   price: {
-    marginTop: 10,
+    // marginTop: 10,
     fontSize: 18,
     fontFamily: fonts.secondaryBold,
+    paddingRight:10,
+    color: 'white'
   },
+  priceView:{
+    backgroundColor:colors.primary,
+    position:'absolute',
+    bottom:0,
+    right:0,
+    paddingHorizontal:20,
+    flexDirection:'row',
+    paddingVertical: 10,
+    borderTopLeftRadius:20,
+    borderBottomLeftRadius:20,
+    borderBottomRightRadius:20
+  }
 });

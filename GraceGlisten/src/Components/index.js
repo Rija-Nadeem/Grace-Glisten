@@ -6,7 +6,8 @@ import Input from './Input';
 import FoodCard from './FoodCard'
 import ItemCard from './ItemCard'
 import HorizontalList from './HorizontalList'
-import CartItem from './CartItem'
+import CartItem from './CartItem';
+import SearchCards from './SearchCards';
 
 export {
   Wrapper,
@@ -17,5 +18,6 @@ export {
   FoodCard,
   ItemCard,
   HorizontalList,
-  CartItem
+  CartItem,
+  SearchCards
 };

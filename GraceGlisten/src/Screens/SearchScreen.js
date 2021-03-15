@@ -8,8 +8,8 @@ import CardComponent from '../Components/FoodCard';
 import {colors, fonts, metrics, text} from '../utils/Theme';
 import {connect} from 'react-redux';
 import data from '../../data';
-import bg from '../../assets/images/bg2.png';
-import {ItemCard} from '../Components';
+// import bg from '../../assets/images/bg2.png';
+import {SearchCards} from '../Components';
 
 function SearchScreen(props) {
   const [list, setlist] = useState(data.items);
@@ -26,12 +26,12 @@ function SearchScreen(props) {
   return (
     <RootView>
       
-      <Header textStyle={{color:colors.secondary}} title={'Search'}></Header>
+      <Header textStyle={{color:'black', fontWeight:'bold'}} title={'Search'}></Header>
       <SearchBar onChangeText={(value) => setsearchQueryText(value)} />
       <View style={{margin: metrics.defaultMargin}}>
-        <Text style={{color:colors.secondary}}>
+        <Text style={{color:colors.primary}}>
     
-          <Text style={{fontFamily: fonts.primary, color:colors.secondary, fontWeight:'bold',}}>Found </Text>
+          <Text style={{fontFamily: fonts.primary, color:colors.primary, fontWeight:'bold',}}>Found </Text>
           {list.length} Results
         </Text>
       </View>
@@ -42,7 +42,7 @@ function SearchScreen(props) {
         style={{padding: metrics.defaultMargin}}
         keyExtractor={() => Math.random().toString()}
         renderItem={({item, index}) => (
-          <ItemCard
+          <SearchCards
             index={index}
             item={item}
             style={{marginBottom: metrics.largeMargin, width: '100%'}}
