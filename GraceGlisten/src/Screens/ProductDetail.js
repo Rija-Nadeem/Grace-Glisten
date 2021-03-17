@@ -92,8 +92,7 @@ class ProductDetail extends Component {
    
     return (
       <Wrapper top={0} bottom={0} style={{ backgroundColor: colors.primary }}>
-      <Header textStyle={{color:colors.secondary}} ></Header>
-
+      <Header textStyle={{color:colors.secondary}}></Header>
         <ScrollView
           style={{ flex: 1, backgroundColor: colors.primary }}
           bounces={false}
@@ -102,19 +101,18 @@ class ProductDetail extends Component {
             <Text style={{
               fontSize:20, textAlign:'center',
               color:'white'
-            }}>${price}</Text>
+                }}>${price}</Text>
               <View style={styles.imageView} >
                 <Image style={styles.image} source={image} />
               </View>
-
-              {/* <TouchableWithoutFeedback onPress={() => Navigator.goBack()}>
-                <View style={styles.backIcon}>
-                  <Icon backgroundColor='transparent' name="chevron-back" color="black" size={30} />
-                </View>
-              </TouchableWithoutFeedback> */}
               <View style={{ paddingHorizontal: metrics.defaultMargin, paddingTop: metrics.defaultMargin }}>
-                {/* <View style={{ width: metrics.width * 0.9,flexDirection:'row', alignItems:'center'}}>
-                  <Text numberOfLines={2} ellipsizeMode="tail" style={styles.nameHeading}>{name}</Text>
+                <Text style={styles.text}>{description}</Text>
+                <View style={{
+                  flex:1,
+                  flexDirection:'row',
+                  justifyContent:'space-between'
+                  }}>
+                  <Text style={{fontSize:16, color:'white', fontWeight:'bold'}}>Quantity:</Text>
                   <View style={styles.quantityView}>
                       <TouchableOpacity
                         activeOpacity={0.8}
@@ -130,70 +128,17 @@ class ProductDetail extends Component {
                         <Icon name="add" style={styles.icon} />
                       </TouchableOpacity>
                     </View>
-                </View> */}
-
-               
-                <Text style={styles.text}>{description}</Text>
-
-                {/* <View style={styles.row}>
-                  <View style={styles.col}>
-                    <View style={styles.blurCard}>
-                        <Text style={styles.property}>Height</Text>
-                        <Text style={styles.value}>{height}"</Text>
-                    </View>
-                  </View>
-                  {voltage && 
-                  <View style={styles.col}>
-                    <View style={styles.blurCard}>
-                        <Text style={styles.property}>Voltage</Text>
-                        <Text style={styles.value}>{voltage}</Text>
-                    </View>
-                  </View>
-                  }
-                  <View style={styles.col}>
-                    <View style={styles.blurCard}>
-                        <Text style={styles.property}>Price</Text>
-                        <Text style={styles.value}>${price}</Text>
-                    </View>
-                  </View>
-                </View> */}
-                <View style={{
-                  flexDirection:'row',
-                  justifyContent:'space-between'
-                }}>
-                  <Text style={{fontSize:16, color:'white', fontWeight:'bold'}}>Quantity:</Text>
-                <View style={styles.quantityView}>
-                      <TouchableOpacity
-                        activeOpacity={0.8}
-                        onPress={this.deleteItem}
-                        style={styles.iconView}>
-                        <Icon name="remove" style={{ ...styles.icon }} />
-                      </TouchableOpacity>
-                      <Text style={styles.quantity}>{quantity}</Text>
-                      <TouchableOpacity
-                        activeOpacity={0.8}
-                        onPress={this.addItem}
-                        style={styles.iconView}>
-                        <Icon name="add" style={styles.icon} />
-                      </TouchableOpacity>
-                    </View>
-
                 </View>
-
-              </View>
-              <TouchableWithoutFeedback
-              onPress={() =>{
-                  Navigator.navigate('Order')
-              }}
-              >
-                  <View style={styles.btn} >
-                    <Text  style={styles.buttonText}>Go To Cart</Text>
-                  </View>
-              </TouchableWithoutFeedback>
-
-            
-            
+              </View> 
         </ScrollView>
+        <TouchableWithoutFeedback
+          onPress={() =>{
+              Navigator.navigate('Order')
+          }}>
+              <View style={styles.btn} >
+                <Text  style={styles.buttonText}>ADD TO CART</Text>
+              </View>
+        </TouchableWithoutFeedback>
       </Wrapper>
     );
   }
@@ -306,9 +251,9 @@ const styles = StyleSheet.create({
     backgroundColor:colors.secondary,
     padding:10,
     paddingVertical:20,
-    marginHorizontal:metrics.defaultMargin,
-    borderRadius:20,
-    marginBottom:metrics.defaultMargin
+    // marginHorizontal:metrics.defaultMargin,
+    // borderRadius:20,
+    // marginBottom:metrics.defaultMargin
     // justifyContent:'center'
   },
   backIcon: {

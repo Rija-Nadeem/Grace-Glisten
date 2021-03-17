@@ -36,7 +36,7 @@ class Checkout extends Component {
   }
 
   onChange(name, val) {
-    console.log({[name]: val});
+    // console.log({[name]: val});
     this.setState({[name]: val});
   }
 
@@ -95,11 +95,11 @@ class Checkout extends Component {
   render() {
     return (
       <Wrapper bottom={0} >
-        <Header textStyle={{fontWeight:'bold'}} title="Customer Details" />
+        <Header textStyle={{fontWeight:'bold'}} title="Personal Details" />
 
         <OrderPlaced
-          visible={this.state.visible}
-          // visible={true}
+          // visible={this.state.visible}
+          visible={true}
           onPress={() => {
             this.setState({visible: false});
             this.props.emptyCart();
@@ -164,8 +164,8 @@ class Checkout extends Component {
               />
               <Input
                 required
-                placeholder="Mobile Number"
-                label="Mobile No."
+                placeholder="Phone Number"
+                label="Phone No."
                 textValue={this.state.phoneNumber}
                 returnKeyType="next"
                 onRef={(ref) => {
@@ -181,8 +181,8 @@ class Checkout extends Component {
               />
               <Input
                 required
-                placeholder="Address"
-                label="Address"
+                placeholder="Residential Address"
+                label="Residential Address"
                 textValue={this.state.address}
                 onRef={(ref) => {
                   this.inputs['address'] = ref;
@@ -193,20 +193,22 @@ class Checkout extends Component {
                 multiline={true}
                 inputStyle={{height: 100}}
               />
+        
+            </KeyboardAwareScrollView>
             <TouchableWithoutFeedback
               onPress={() => {
                 this.onButtonPress();
               }}>
               <View onPress={this.props.onPress} style={[styles.button,{ overflow: 'hidden'}]}>
                 {this.state.loading ? (
-                  <BarIndicator color="white" size={24} />
+                  <View style={styles.bar}>
+                  <BarIndicator color={colors.secondary} size={24} />
+                </View>
                 ) : (
-                  <Text style={styles.buttonText} >Checkout</Text>
+                  <Text style={styles.buttonText} >CHECKOUT</Text>
                 )}
               </View>
             </TouchableWithoutFeedback>
-        
-            </KeyboardAwareScrollView>
      
       </Wrapper>
     );
@@ -220,24 +222,17 @@ const styles = StyleSheet.create({
     marginVertical: metrics.defaultMargin,
     fontWeight:'bold',
   },
-  buttonView: {
-    backgroundColor: colors.secondary,
-    flexDirection: 'row',
-    padding: 20,
-    justifyContent: 'space-between',
-    borderTopStartRadius: 30,
-    paddingHorizontal: 30,
-    marginLeft: metrics.defaultMargin,
-    minHeight: 80,
-  },
-  buttonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 18,
-    fontFamily: fonts.secondaryBold,
-    fontWeight:'bold',
-    backgroundColor:colors.primary
-  },
+  // buttonView: {
+  //   backgroundColor: colors.secondary,
+  //   flexDirection: 'row',
+  //   padding: 20,
+  //   justifyContent: 'space-between',
+  //   borderTopStartRadius: 30,
+  //   paddingHorizontal: 30,
+  //   marginLeft: metrics.defaultMargin,
+  //   minHeight: 80,
+  // },
+  
   iconView: {
     backgroundColor: 'rgb(255,255,255)',
     width: 50,
@@ -269,9 +264,21 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.secondary,
-    padding: 10,
-    borderRadius: 10,
-
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 18,
+    fontFamily: fonts.secondaryBold,
+    fontWeight:'bold',
+    backgroundColor:colors.primary,
+    padding: 20,
+  },
+  bar:{
+    padding: 32,
+    // borderRadius: 20,
+    justifyContent:'center',
+    backgroundColor:colors.primary,
   },
 });
 

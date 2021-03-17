@@ -92,10 +92,7 @@ class Home extends Component {
               style={styles.icon}
             />
           </View>
-{/*             
-          <Text style={styles.des}>
-              We have wide range of furnitures
-          </Text> */}
+          
           <SearchBar
           // containerStyle={{marginTop:40}}
            textInput={{color: 'red'}} disabled />

@@ -58,10 +58,6 @@ class OrderScreen extends Component {
                 />
               ))}
               <View style={{margin: metrics.defaultMargin}}>
-                {/* <View style={styles.info}>
-                    <Text style={styles.title}>Delivery Time</Text>
-                    <Text style={styles.text}>45 mins</Text>
-                </View> */}
                 <View style={styles.info}>
                     <Text style={styles.title}>Delivery Time</Text>
                     <Text style={styles.text}>45 mins</Text>
@@ -71,7 +67,7 @@ class OrderScreen extends Component {
                     <Text style={styles.text}>Payment on Delivery</Text>
                 </View>
                 <View style={styles.info}>
-                    <Text style={styles.title}>Total</Text>
+                    <Text style={styles.title}>Total Price</Text>
                     <Text style={[styles.title, {color: colors.primary}]}>
                     ${parseInt(this.props.cart.totalPrice) * this.state.quantity}
                     </Text>
@@ -84,8 +80,8 @@ class OrderScreen extends Component {
                 onPress={() =>
                   Navigator.navigate('Checkout')}
                 >
-                  <View style={{flexDirection:'row', justifyContent:'center'}} >
-                    <Text  style={styles.buttonText}>Confirm Order</Text>
+                  <View style={{flexDirection:'row', justifyContent:'center', backgroundColor:'red'}} >
+                    <Text  style={styles.buttonText}>CONFIRM ORDER</Text>
                   </View>
                 </TouchableWithoutFeedback>
               )}
@@ -132,19 +128,20 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
   buttonText: {
-    color: colors.primary,
+    color: colors.secondary,
+    flex:1,
     // marginTop:8,
-    marginVertical: metrics.defaultMargin,
+    // marginVertical: metrics.defaultMargin,
     fontSize: 20,
     fontWeight:'bold',
     fontFamily: fonts.primaryBold,
     textAlign:'center',
     padding:10,
     paddingVertical:20,
-    borderRadius:20,
-    backgroundColor:colors.secondary,
+    // borderRadius:20,
+    backgroundColor:colors.primary,
     // borderWidth:1,
-    width:'80%'
+    // width:'80%'
   },
   empty:{
     fontSize: 18,
